@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>tag-it</title>
+    <link rel="stylesheet" href="css/jquery.tagit.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.9.0.custom.css">
+    <link rel="stylesheet" href="css/tagit.ui-zendesk.css">
+  </head>
+  <body>
+    <element name="x-tag-it" constructor="TagIt" extends="div">
+	    <template>
+	      <ul class="tagit ui-widget ui-widget-content ui-corner-all">
+	        <template iterate='tag in values'>
+            <li class="tagit-choice ui-widget-content ui-state-default ui-corner-all {{tag.additionalClass}}">
+              <template  instantiate='if clickable'>
+                <a class="tagit-label" data-action="click:tag.onClick">{{tag.value}}</a>
+              </template>
+              <template  instantiate='if !clickable'>
+                <span class="tagit-label">{{tag.value}}</span>
+              </template>
+              <a class="close" data-action="click:tag.removeTag">
+                <span class="text-icon">x</span>
+                <span class="ui-icon ui-icon-close"></span>
+              </a>
+            </li>
+          </template>
+	        <li class="tagit-new">
+	          <input type="text" data-bind="value:newValue" class="ui-widget-content" data-action="keyDown:onKeydown,blur:onBlur" placeholder="{{placeholderText}}" />
+	        </li>
+	      </ul>
+	    </template>
+      <script type="application/dart" src="tagit.dart"></script>
+    </element>
+    <div is="x-tag-it" data-value="initialValue:values"></div>
+    <script type="application/dart">
+      String values = "dart,java,erlang,smalltalk";
+      main(){}
+    </script>
+  </body>
+</html>
