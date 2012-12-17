@@ -5,7 +5,7 @@
 
 /** Build logic that lets the Dart editor build examples in the background. */
 library build;
-import 'package:web_components/component_build.dart';
+import 'package:web_ui/component_build.dart';
 import 'dart:io';
 
 void main() {

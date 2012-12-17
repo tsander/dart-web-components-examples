@@ -1,5 +1,5 @@
 import 'dart:html';
-import 'package:web_components/web_components.dart';
+import 'package:web_ui/web_ui.dart';
 
 class Tag {
   String additionalClass = "";
@@ -81,7 +81,7 @@ class TagIt extends WebComponent {
     createTag(cleanedInput());
   }
 
-  void created() {
+  void inserted() {
     initialValue.split(singleFieldDelimiter).forEach((tag) => createTag(tag));
   }
   
