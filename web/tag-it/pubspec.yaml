@@ -1,0 +1,5 @@
+name:  App
+description:  Web Component Examples
+
+dependencies:
+  web_ui: any

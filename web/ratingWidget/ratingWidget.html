@@ -10,14 +10,14 @@
     <element name="ratingWidget" constructor="RatingWidget" extends="div">
       <template>
         <div class="rateit">
-          <div class="rateit-reset" on-click="reset($event)" data-style="resetStyle"></div>
-          <div class="rateit-range" data-style="rangeStyle" on-click="mouseup($event)" on-mouse-move="mousemove($event)" on-mouse-out="mouseout($event)">
-            <div class="{{presetClass}} rateit-selected" data-style="selectedStyle" style="height: 16px;"></div>
-            <div class="rateit-hover" data-style="hoverStyle" style="height: 16px"></div>
+          <div class="rateit-reset" on-click="reset($event)" style="{{resetStyle}}"></div>
+          <div class="rateit-range" style="{{rangeStyle}}" on-click="mouseup($event)" on-mouse-move="mousemove($event)" on-mouse-out="mouseout($event)">
+            <div class="{{presetClass}} rateit-selected" style="{{selectedStyle}}"></div>
+            <div class="rateit-hover" style="{{hoverStyle}}"></div>
           </div>
         </div>
       </template>
-      <script type="application/dart" src="ratingWidget.dart"> 
+      <script type="application/dart" src="ratingWidget.dart">
       </script>
   </element>
   <div class="well">

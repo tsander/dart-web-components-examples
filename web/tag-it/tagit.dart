@@ -39,7 +39,7 @@ class TagIt extends WebComponent {
   Function onTagRemoved = null;
   Function onTagClicked = null;
 
-  String get value => Strings.join(assignedTags, singleFieldDelimiter);
+  String get value => assignedTags.join(singleFieldDelimiter);
 
   void tagSourceImpl(search, showChoices) {
     // TODO(tsander): implement
@@ -61,7 +61,7 @@ class TagIt extends WebComponent {
     if (event.keyCode == KeyCode.COMMA
         || event.keyCode == KeyCode.ENTER
         || event.keyCode == KeyCode.TAB
-        || (event.keyCode == KeyCode.SPACE && !allowSpaces 
+        || (event.keyCode == KeyCode.SPACE && !allowSpaces
             && !currentlyInQuotes())) {
 
       event.preventDefault();
@@ -77,14 +77,14 @@ class TagIt extends WebComponent {
         && !(input.endsWith('"'));
   }
 
-  void onBlur(event) {
+  void blurred(e) {
     createTag(cleanedInput());
   }
 
   void inserted() {
     initialValue.split(singleFieldDelimiter).forEach((tag) => createTag(tag));
   }
-  
+
   String cleanedInput() {
     RegExp trimRemoveQuotes = new RegExp(r'^"?\s*(.*?)\s*"?$');
     var m = trimRemoveQuotes.firstMatch(newValue);
@@ -102,7 +102,7 @@ class TagIt extends WebComponent {
   }
 
   bool isNew(value) {
-    return !values.some((tag) => value == tag.value);
+    return !values.any((tag) => value == tag.value);
   }
 
   String formatString(String value) {
@@ -114,17 +114,17 @@ class TagIt extends WebComponent {
 
   void createTag(String value, [String additionalClass = ""]) {
     value = value.trim();
-    
+
     // Check to see if we already have one??
     if (!isNew(value) || value == "") {
       return;
     }
-    
+
     Tag tag = new Tag(value, this, additionalClass);
     if (onTagAdded != null) {
       onTagAdded(tag);
     }
-    
+
     newValue = "";
     values.add(tag);
   }
