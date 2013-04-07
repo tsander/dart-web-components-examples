@@ -4,6 +4,4 @@ description:  Web Component Examples
 version: 0.0.1
 
 dependencies:
-  #web_ui: any
-  web_ui:
-    path: /Users/ted/Documents/PolychromaticWorkspace/web-ui
+  web_ui: any

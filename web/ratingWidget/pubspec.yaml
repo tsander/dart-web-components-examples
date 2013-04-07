@@ -2,6 +2,4 @@ name:  App
 description:  Web Component Examples
 
 dependencies:
-  #web_ui: any
-  web_ui:
-    path: /Users/ted/Documents/PolychromaticWorkspace/web-ui
+  web_ui: any
